@@ -1,6 +1,12 @@
-
+const CustomAPIError= require('../errors/custom-error')
 
 const login=async (req,res)=>{
+    const {username,password}=req.body
+    //check if the login/register variable are there first using our own class CustomAPIError
+    if (!username || !password){
+        throw new CustomAPIError('please provide your name and password',400)
+    }
+    console.log(username,password)
     res.status(201).send('Fake Login/Register/Sing-up Route')
 }
 
