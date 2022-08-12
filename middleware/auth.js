@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const authenticationMiddleware = (req,res,next)=>{
     const authHeader = req.headers.authorization
     if (!authHeader || !authHeader.startsWith('Bearer')){
-        throw new CustomAPIError('please provide your token', 401)
+         throw new CustomAPIError('please provide your token', 401)
     }
     const token=authHeader.split(' ')[1]
     try{
@@ -14,7 +14,7 @@ const authenticationMiddleware = (req,res,next)=>{
         req.user={username,id}
         next()
     }catch (err){
-        throw new CustomAPIError('unauthorized connection :(', 401)
+         throw new CustomAPIError('unauthorized connection :(', 401)
     }
 
     next()
