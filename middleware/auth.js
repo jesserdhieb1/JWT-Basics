@@ -1,4 +1,4 @@
-const CustomAPIError = require("../errors/custom-error");
+const {CustomAPIError,UnauthenticatedError} = require("../errors/index");
 require('dotenv').config()
 const jwt = require("jsonwebtoken");
 
@@ -14,7 +14,7 @@ const authenticationMiddleware = (req,res,next)=>{
         req.user={username,id}
         next()
     }catch (err){
-         throw new CustomAPIError('unauthorized connection :(', 401)
+         throw new UnauthenticatedError('unauthorized connection :(')
     }
 
     next()
