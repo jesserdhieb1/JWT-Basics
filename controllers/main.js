@@ -1,4 +1,6 @@
 const CustomAPIError= require('../errors/custom-error')
+require('dotenv').config()
+const jwt = require('jsonwebtoken');
 
 const login=async (req,res)=>{
     const {username,password}=req.body
@@ -6,8 +8,12 @@ const login=async (req,res)=>{
     if (!username || !password){
         throw new CustomAPIError('please provide your name and password',400)
     }
-    console.log(username,password)
-    res.status(201).send('Fake Login/Register/Sing-up Route')
+    const id =Date.now()
+    console.log(id)
+    const token= jwt.sign({username,id},process.env.JWT_SECRET,{expiresIN:'30d'})
+    // res.set('token','token')
+    console.log(token)
+    res.status(201).json({msg:'user connected',token:token})
 }
 
 const dashboard=async (req,res)=>{
