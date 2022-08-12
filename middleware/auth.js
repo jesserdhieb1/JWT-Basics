@@ -1,4 +1,4 @@
-const {CustomAPIError,UnauthenticatedError} = require("../errors/index");
+const {CustomAPIError,UnauthenticatedError} = require("../errors");
 require('dotenv').config()
 const jwt = require("jsonwebtoken");
 
