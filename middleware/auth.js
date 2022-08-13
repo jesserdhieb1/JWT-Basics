@@ -16,8 +16,6 @@ const authenticationMiddleware = (req,res,next)=>{
     }catch (err){
          throw new UnauthenticatedError('unauthorized connection :(')
     }
-
-    next()
 }
 
 module.exports=authenticationMiddleware
